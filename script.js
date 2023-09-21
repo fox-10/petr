@@ -26,7 +26,7 @@
 'use strict';
 
 let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?');
-console.log(numberOfFilms);
+
 
 let personalMovieDB = {
     count: numberOfFilms,
@@ -36,33 +36,54 @@ let personalMovieDB = {
     privat: false
 };
 
-let lastMovies = prompt('Один из последних просмотренных фильмов?');
-let score = prompt('На сколько оцените его?');
+// let lastMovies = prompt('Один из последних просмотренных фильмов?');
+// let score = prompt('На сколько оцените его?');
 
-let lastMovies2 = prompt('Один из последних просмотренных фильмов?');
-let score2 = prompt('На сколько оцените его?');
+// let lastMovies2 = prompt('Один из последних просмотренных фильмов?');
+// let score2 = prompt('На сколько оцените его?');
 
-personalMovieDB.movies[lastMovies] = score;
-personalMovieDB.movies[lastMovies2] = score2;
+// personalMovieDB.movies[lastMovies] = score;
+// personalMovieDB.movies[lastMovies2] = score2;
+
+
+
+for(let i = 1; i < 3; i++) {
+    let lastMovies = prompt('Один из последних просмотренных фильмов?');
+    if(lastMovies == '' || lastMovies == null || lastMovies.length > 50) {
+        i--;
+        continue;
+    }
+
+    let score = prompt('На сколько оцените его?');
+    if(score =='' || score == null) {
+        i--;
+        continue;
+    }
+
+    personalMovieDB.movies[lastMovies] = score;
+}
+
+if(personalMovieDB.count <10) {
+    console.log("Просмотрено довольно мало фильмов");
+} else if(personalMovieDB.count <= 30) {
+    console.log("Вы классический зритель");
+} else if(personalMovieDB.count > 30) {
+    console.log("Вы киноман");
+} else {
+    console.log("Произошла ошибка");
+} 
 
 console.log(personalMovieDB);
-
 // const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// const personalMovieDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
+// 1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
 
-// const a = prompt('Один из последних просмотренных фильмов?', ''),
-//       b = prompt('На сколько оцените его?', ''),
-//       c = prompt('Один из последних просмотренных фильмов?', ''),
-//       d = prompt('На сколько оцените его?', '');
+// 2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
+// отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
+// возвращаем пользователя к вопросам опять
 
-// personalMovieDB.movies[a] = b;
-// personalMovieDB.movies[c] = d;
+// 3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
+// "Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
+// "Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
 
-// console.log(personalMovieDB);
+// 4) Потренироваться и переписать цикл еще двумя способами*/
